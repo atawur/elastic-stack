@@ -1,0 +1,20 @@
+{
+  "template": "logstash",
+  "index_patterns": ["els-*"],
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "lavel": {
+        "type": "keyword"
+      },
+      "message": {
+        "type": "text"
+      },
+      "@timestamp": {
+        "type": "date"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /usr/share/filebeat/auth-logs/*.log
+      - /usr/share/filebeat/auth-store-logs/*.log
+      - /usr/share/filebeat/ui-logs/*.log
+      - /usr/share/filebeat/job-logs/*.log
+      - /usr/share/filebeat/job-store-logs/*.log
+      - /usr/share/filebeat/client-ui-logs/*.log
+      - /usr/share/filebeat/client-logs/*.log
+      - /usr/share/filebeat/client-store-logs/*.log
+      - /usr/share/filebeat/opsbot-logs/*.log
+      - /usr/share/filebeat/opsbot-store-logs/*.log
+#      - /usr/share/filebeat/app1_logs/*.log
+
+output.logstash:
+  hosts: ["els-logstash:5044"]
+
+processors:
+  - add_docker_metadata:
+      host: "unix:///host_docker/docker.sock"
